@@ -164,8 +164,8 @@ let numerosNuevos = [...numeros];
 
 numeros.push(77);
 
-console.log(numeros);       // 12, 43, 5, 77
-console.log(numerosNuevos); // 12, 43, 5
+console.log(numeros);       // [12, 43, 5, 77]
+console.log(numerosNuevos); // [12, 43, 5]
 
 // Usando el spread, si agregamos valores nuevos
 // al array original, no se agrega al nuevo
@@ -176,12 +176,34 @@ let numeros2 = numeros;
 
 numeros.push(77);
 
-console.log(numeros);  // 12, 43, 5, 77
-console.log(numeros2); // 12, 43, 5, 77
+console.log(numeros);  // [12, 43, 5, 77]
+console.log(numeros2); // [12, 43, 5, 77]
 
 // Si solamente hacemos una asignación
 // si se agrega al nuevo
 
 // Métodos de arrays
 
-// MAP
+// Map
+
+// Ejecuta el callback por cada uno de los elementos del array
+
+numeros = [12, 43, 5];
+
+let numerosMultiplicados = numeros.map( (x) => { return x * 10 });
+
+console.log(numerosMultiplicados); // [120, 430, 50]
+
+numeros = [1, 1, 1];
+
+let numerosMultiplicadosPorSuIndice = numeros.map( (x, i) => { return x * i });
+
+console.log(numerosMultiplicadosPorSuIndice); // [0, 1, 2]
+
+// Filter
+
+numeros = [12, 43, 5];
+
+let numerosMayoresa30 = numeros.filter( (x, i) => { return x > 30 });
+
+console.log(numerosMayoresa30); // [43]
