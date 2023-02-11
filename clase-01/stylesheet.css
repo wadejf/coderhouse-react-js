@@ -1,0 +1,9 @@
+/* Specificity (0, 1, 0) */
+.test {
+    color: red;
+}
+
+/* Specificity (1, 0, 0) */
+#test {
+    color: blue;
+}
