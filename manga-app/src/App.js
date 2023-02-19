@@ -1,8 +1,12 @@
+import Navbar from "./components/NavBar/NavBar";
+import {Container} from "@mui/material";
+import styles from './index.css';
+
 function App() {
   return (
-    <div>
-      <h1>Hola Mundo!</h1>
-    </div>
+    <Container className={styles.container}>
+      <Navbar />
+    </Container>
   );
 }
 
