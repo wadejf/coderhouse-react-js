@@ -1,24 +1,20 @@
 import styles from './NavBar.module.css';
 import CartWidget from "../CartWidget/CartWidget";
+import Logo from "../Logo/Logo";
 
-const Navbar = () => {
+const NavBar = () => {
   return (
-    <div className={styles.containerNavBar}>
-      <img
-        src="../../assets/images/icon.png"
-        alt=""
-        style={{ width: "10%", objectFit: "cover" }}
-      />
+      <div className={styles.NavBar}>
+        <Logo/>
 
-
-      <ul className={styles.containerList}>
-        <li>Todas</li>
-        <li>Urbanas</li>
-        <li>Deportivas</li>
-      </ul>
-        <CartWidget />
-    </div>
+        <ul className={styles.NavBarList}>
+          <li>Nuevos Lanzamientos</li>
+          <li>Categorías</li>
+          <li>Promociones</li>
+        </ul>
+        <CartWidget/>
+      </div>
   );
 };
 
-export default Navbar;
+export default NavBar;

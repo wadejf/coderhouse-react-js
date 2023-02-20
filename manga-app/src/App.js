@@ -1,12 +1,11 @@
-import Navbar from "./components/NavBar/NavBar";
+import NavBar from "./components/NavBar/NavBar";
 import {Container} from "@mui/material";
-import styles from './index.css';
 
 function App() {
   return (
-    <Container className={styles.container}>
-      <Navbar />
-    </Container>
+      <Container maxWidth="md">
+        <NavBar/>
+      </Container>
   );
 }
 
