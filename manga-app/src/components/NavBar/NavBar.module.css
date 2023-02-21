@@ -8,5 +8,29 @@
 .NavBarList {
     display: flex;
     list-style: none;
-    gap: 100px;
+    gap: 6vh;
+}
+
+.NavBarListItem {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+.NavBarListItem:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: indianred;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.NavBarListItem:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }

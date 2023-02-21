@@ -8,9 +8,9 @@ const NavBar = () => {
         <Logo/>
 
         <ul className={styles.NavBarList}>
-          <li>Nuevos Lanzamientos</li>
-          <li>Categorías</li>
-          <li>Promociones</li>
+          <li className={styles.NavBarListItem}>Nuevos Lanzamientos</li>
+          <li className={styles.NavBarListItem}>Categorías</li>
+          <li className={styles.NavBarListItem}>Promociones</li>
         </ul>
         <CartWidget/>
       </div>

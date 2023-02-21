@@ -1,7 +1,10 @@
+import styles from './ItemListContainer.module.css';
 
-const ItemListContainer = ({ greeting }) => {
+const ItemListContainer = ({greeting}) => {
   return (
-    <div>Bienvenido! {greeting}</div>
+      <div className={styles.ItemListContainer}>
+        Bienvenido a Ikigai Manga Store! {greeting}
+      </div>
   )
 }
 
