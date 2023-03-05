@@ -1,1 +1,1 @@
-![Demo](ikigai-gif.gif)
+![Demo](demo.gif)
