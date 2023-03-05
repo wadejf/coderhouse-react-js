@@ -1,0 +1,12 @@
+.ItemPrice {
+    margin-right: 10px;
+}
+
+.ItemOldPrice {
+    text-decoration: line-through;
+    margin-right: 10px;
+}
+
+.ItemDiscountedPrice {
+    color: #CD5C5C;
+}

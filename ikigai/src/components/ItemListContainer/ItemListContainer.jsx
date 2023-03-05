@@ -8,21 +8,27 @@ const ItemListContainer = () => {
   const { categoryName } = useParams();
   const [products, setProducts] = useState([]);
 
-  const fetchProducts = async () => {
-    const { data } = axios
-      .get("products.json")
-      .then((res) => setProducts(res.data))
-      .catch((err) => console.log(err));
+  const filterProducts = (products) => {
+    if (!categoryName)
+      return products.filter(
+        (p) => new Date(p.publishedDate) > new Date().setDate(1)
+      );
 
-    if (!data) return;
+    if (categoryName === "todos") return products.slice(0, 10);
 
-    const products = data.filter((p) => p.category === categoryName);
+    if (categoryName === "promociones")
+      return products.filter((p) => p.discount);
 
-    setProducts(products);
+    return products;
   };
 
   useEffect(() => {
-    fetchProducts();
+    axios
+      .get("/products.json")
+      .then((res) => {
+        setProducts(filterProducts(res.data));
+      })
+      .catch((err) => console.log(err));
   }, [categoryName]);
 
   return (

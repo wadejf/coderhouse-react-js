@@ -4,7 +4,7 @@ import styles from './Logo.module.css';
 const Logo = () => {
     return (
         <div>
-            <img src={icon} className={styles.Logo}/>
+            <img alt="ikigai-logo" src={icon} className={styles.Logo}/>
         </div>
     )
 };

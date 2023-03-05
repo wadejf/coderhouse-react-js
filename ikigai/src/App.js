@@ -4,6 +4,7 @@ import { Container } from "@mui/material";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import Cart from "./components/Cart/Cart";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
 
           <Route path="/item/:id" element={<ItemDetailContainer />} />
         </Routes>
+        <Footer />
       </Container>
     </BrowserRouter>
   );
