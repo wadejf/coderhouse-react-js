@@ -12,9 +12,11 @@
 }
 
 .NavBarListItem {
+    color: black;
     display: inline-block;
     position: relative;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .NavBarListItem:after {
@@ -29,6 +31,11 @@
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
 }
+
+.NavBarListItem:visited {
+    text-decoration: none;
+}
+
 
 .NavBarListItem:hover:after {
     transform: scaleX(1);
