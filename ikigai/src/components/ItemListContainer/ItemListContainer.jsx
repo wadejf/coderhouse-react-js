@@ -2,12 +2,13 @@ import styles from "./ItemListContainer.module.css";
 import ItemList from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import { doc, getFirestore, getDoc } from 'firebase/firestore';
 
 const ItemListContainer = () => {
   const { categoryName } = useParams();
   const [products, setProducts] = useState([]);
 
+  /*
   const filterProducts = (products) => {
     if (!categoryName)
       return products.filter(
@@ -20,15 +21,19 @@ const ItemListContainer = () => {
       return products.filter((p) => p.discount);
 
     return products;
-  };
+  };*/
 
   useEffect(() => {
-    axios
-      .get("/products.json")
-      .then((res) => {
-        setProducts(filterProducts(res.data));
-      })
-      .catch((err) => console.log(err));
+    const db = getFirestore();
+
+    const p = doc(db, 'products', 'pa6HUvtoIn0ay5Vfan1g');
+
+    const docSnap = getDoc(p);
+
+    docSnap.then(s => {
+      setProducts([s.data()]);
+    }).catch(e => console.log(e));
+
   }, [categoryName]);
 
   return (
