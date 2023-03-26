@@ -2,7 +2,7 @@ import React from "react";
 import Item from "../Item/Item";
 import { Pagination } from "@mui/material";
 
-const ItemList = ({ items }) => {
+const ItemList = ({ items, totalPages }) => {
   return (
     <div>
       <div
@@ -20,19 +20,7 @@ const ItemList = ({ items }) => {
           return <Item key={element.id} element={element} />;
         })}
       </div>
-      <div
-        style={{
-          display: "flex",
-          width: "100%",
-          minHeight: "10vh",
-          justifyContent: "center",
-          alignItems: "center",
-          flexWrap: "wrap",
-          marginTop: "50px",
-        }}
-      >
-        <Pagination color="warning" count={10} />
-      </div>
+
     </div>
   );
 };
