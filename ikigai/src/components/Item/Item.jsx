@@ -15,10 +15,10 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 const Item = ({ element }) => {
   return (
-    <Card sx={{ width: 250, boxShadow: 3, padding: 1 }}>
+    <Card sx={{ width: 200, boxShadow: 3, padding: 1 }}>
       <CardActionArea component={RouterLink} to={`/item/${element.id}`}>
         <CardMedia
-          sx={{ maxWidth: 250, height: 350, backgroundColor: "whitesmoke" }}
+          sx={{ maxWidth: 200, height: 300, backgroundColor: "whitesmoke" }}
           image={element.img}
         />
         <CardContent sx={{ height: 70 }}>

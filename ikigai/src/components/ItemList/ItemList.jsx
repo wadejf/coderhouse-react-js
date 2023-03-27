@@ -9,7 +9,7 @@ const ItemList = ({ items, totalPages }) => {
         style={{
           display: "flex",
           width: "100%",
-          minHeight: "10vh",
+          minHeight: "6vh",
           justifyContent: "space-evenly",
           alignItems: "center",
           flexWrap: "wrap",
