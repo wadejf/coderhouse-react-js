@@ -1,25 +1,19 @@
 import React from "react";
-
 import styles from "./ItemPrice.module.css";
 
-import { Typography } from "@mui/material";
-
 const ItemPrice = ({ item }) => {
+  const formatPrice = (price) => {
+    return `$ ${new Intl.NumberFormat("es-AR").format(price)}`;
+  };
   return item.discount ? (
-    <>
-      <Typography gutterBottom variant="h6" component="span">
-        <span className={styles.ItemOldPrice}>${item.price}</span>
-      </Typography>
-      <Typography gutterBottom variant="h5" component="span">
-        <span className={styles.ItemDiscountedPrice}>
-          ${item.discountedPrice}
-        </span>
-      </Typography>
-    </>
+    <div>
+      <span className={styles.ItemOldPrice}>{formatPrice(item.price)}</span>
+      <span className={styles.ItemDiscountedPrice}>
+        {formatPrice(item.discountedPrice)}
+      </span>
+    </div>
   ) : (
-    <Typography gutterBottom variant="h5" component="span">
-      <span className={styles.ItemPrice}>${item.price}</span>
-    </Typography>
+    <span className={styles.ItemPrice}>{formatPrice(item.price)}</span>
   );
 };
 

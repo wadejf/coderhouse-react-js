@@ -1,5 +1,5 @@
 .NavBar {
-    height: 15vh;
+    height: 18vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -17,6 +17,8 @@
     position: relative;
     cursor: pointer;
     text-decoration: none;
+    font-weight: bold;
+    font-size: 22px;
 }
 
 .NavBarListItem:after {
