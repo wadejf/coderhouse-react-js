@@ -1,12 +1,17 @@
 .ItemPrice {
-    margin-right: 10px;
+    font-size: xx-large;
+    letter-spacing: -1px;
 }
 
 .ItemOldPrice {
+    font-size: xx-large;
+    letter-spacing: -1px;
     text-decoration: line-through;
     margin-right: 10px;
 }
 
 .ItemDiscountedPrice {
+    font-size: xx-large;
+    letter-spacing: -1px;
     color: #CD5C5C;
 }

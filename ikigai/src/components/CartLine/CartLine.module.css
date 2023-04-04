@@ -1,0 +1,39 @@
+.CartLineContainer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+    padding: 15px 0px 10px 0px;
+}
+
+.CartLineImageContainer {
+    width: 10%;
+    text-align: left;
+}
+
+.CartLineTitleContainer {
+    width: 30%;
+    text-align: left;
+}
+
+.CartLineUnitaryPriceContainer {
+    width: 10%;
+    text-align: left;
+}
+
+.CartLineQuantityContainer {
+    width: 10%;
+    text-align: left;
+}
+
+.CartLineTotalPriceContainer {
+    width: 10%;
+    text-align: left;
+}
+
+.CartLineImage {
+    max-width: 150px;
+    max-height: 260px;
+}

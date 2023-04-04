@@ -32,11 +32,6 @@ const ItemListContainer = () => {
   };*/
 
   const filterProducts = (products) => {
-    if (!categoryName)
-      return products.filter(
-        (p) => new Date(p.publishedDate) > new Date().setDate(1)
-      );
-
     if (categoryName === "promociones")
       return products.filter((p) => p.discount);
 
@@ -44,7 +39,7 @@ const ItemListContainer = () => {
   }
 
   const paginateProducts = (p) => {
-    return p.slice((page - 1) * 10, page * 10);
+    return p.slice((page - 1) * 12, page * 12);
   };
 
   useEffect(() => {
