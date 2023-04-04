@@ -1,13 +1,23 @@
 .ItemCardContainer {
   display: flex;
   width: 300px;
-  height: 580px;
+  height: 600px;
   flex-direction: column;
   align-self: start;
   border: 1px solid lightgray;
   box-shadow: 5px 5px 5px lightgray;
   border-radius: 10px;
   background-color: #f5f5f5;
+}
+
+.ItemCardImageWithoutStock {
+  width: 300px;
+  height: 420px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  clip-path: polygon(0 0%, 100% 0%, 100% 95%, 0% 100%);
+  opacity: 0.3
+  ;
 }
 
 .ItemCardImage {

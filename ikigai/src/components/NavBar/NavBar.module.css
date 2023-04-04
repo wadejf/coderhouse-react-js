@@ -1,14 +1,16 @@
 .NavBar {
-    height: 18vh;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
 }
 
 .NavBarList {
     display: flex;
+    flex-wrap: wrap;
     list-style: none;
-    gap: 6vh;
+    padding: 0px;
+    gap: 15vh;
 }
 
 .NavBarListItem {
@@ -42,4 +44,8 @@
 .NavBarListItem:hover:after {
     transform: scaleX(1);
     transform-origin: bottom left;
+}
+
+a {
+    color: black;
 }

@@ -8,11 +8,19 @@ const ItemCard = ({ item }) => {
   return (
     <div className={styles.ItemCardContainer}>
       <Link to={`/item/${item.id}`}>
-        <img alt="item" src={item.img} className={styles.ItemCardImage} />
+        <img
+          alt="item"
+          src={item.img}
+          className={
+            item.stock > 0
+              ? styles.ItemCardImage
+              : styles.ItemCardImageWithoutStock
+          }
+        />
       </Link>
       <span className={styles.ItemCardTitle}>{item.title}</span>
       <ItemPrice item={item} />
-      <AddToCartWidget />
+      <AddToCartWidget item={item} />
     </div>
   );
 };

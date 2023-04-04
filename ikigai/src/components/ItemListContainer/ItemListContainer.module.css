@@ -1,4 +1,6 @@
 .ItemListContainer {
-    padding: 5vh;
+    padding: 3.5vh 5vh 3.5vh 5vh;
     text-align: center;
+    display: flex;
+    flex-wrap: wrap;
 }
