@@ -1,13 +1,10 @@
-import Badge from "@mui/material/Badge";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { MdOutlineShoppingCart } from 'react-icons/md';
 import styles from './CartWidget.module.css';
 
 const CartWidget = () => {
   return (
       <div className={styles.CartIcon}>
-        <Badge badgeContent={2} color="warning">
-          <ShoppingCartIcon/>
-        </Badge>
+          <MdOutlineShoppingCart size={30}/>
       </div>
   );
 };

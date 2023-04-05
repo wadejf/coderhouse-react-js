@@ -1,38 +1,13 @@
 import React from "react";
+import styles from './ItemList.module.css';
 import Item from "../Item/Item";
-import { Pagination } from "@mui/material";
 
-const ItemList = ({ items }) => {
+const ItemList = ({ items, totalPages }) => {
   return (
-    <div>
-      <div
-        style={{
-          display: "flex",
-          width: "100%",
-          minHeight: "10vh",
-          justifyContent: "space-evenly",
-          alignItems: "center",
-          flexWrap: "wrap",
-          gap: "10px",
-        }}
-      >
+    <div className={styles.ItemList}>
         {items.map((element) => {
           return <Item key={element.id} element={element} />;
         })}
-      </div>
-      <div
-        style={{
-          display: "flex",
-          width: "100%",
-          minHeight: "10vh",
-          justifyContent: "center",
-          alignItems: "center",
-          flexWrap: "wrap",
-          marginTop: "50px",
-        }}
-      >
-        <Pagination color="warning" count={10} />
-      </div>
     </div>
   );
 };

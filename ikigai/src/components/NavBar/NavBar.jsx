@@ -12,7 +12,7 @@ const NavBar = () => {
 
       <ul className={styles.NavBarList}>
         <Link to="/" className={styles.NavBarListItem}>
-          Nuevos Lanzamientos
+          Novedades
         </Link>
         <Link to="/category/todos" className={styles.NavBarListItem}>
           Todos
@@ -21,7 +21,9 @@ const NavBar = () => {
           Promociones
         </Link>
       </ul>
-      <CartWidget />
+      <Link to="/cart">
+        <CartWidget />
+      </Link>
     </div>
   );
 };
