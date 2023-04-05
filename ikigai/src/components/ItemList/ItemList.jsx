@@ -1,12 +1,12 @@
 import React from "react";
 import styles from './ItemList.module.css';
-import Item from "../Item/Item";
+import ItemCard from "../ItemCard/ItemCard";
 
-const ItemList = ({ items, totalPages }) => {
+const ItemList = ({ items }) => {
   return (
     <div className={styles.ItemList}>
         {items.map((element) => {
-          return <Item key={element.id} element={element} />;
+          return <ItemCard key={element.id} item={element} />;
         })}
     </div>
   );

@@ -14,13 +14,15 @@ const ItemDetail = ({ item }) => {
           <span className={styles.ItemDetailTitle}>{item.title}</span>
         </div>
         <div className={styles.ItemDetailDescriptionContainer}>
-          <span className={styles.ItemDetailDescription}>{item.description}</span>
+          <span className={styles.ItemDetailDescription}>
+            {item.description}
+          </span>
         </div>
         <div className={styles.ItemDetailPriceContainer}>
           <ItemPrice item={item} />
         </div>
         <div className={styles.ItemDetailAddToCartContainer}>
-          <AddToCartWidget item={item}/>
+          <AddToCartWidget item={item} />
         </div>
       </div>
     </div>

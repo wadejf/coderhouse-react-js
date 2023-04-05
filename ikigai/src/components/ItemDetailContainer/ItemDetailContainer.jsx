@@ -1,7 +1,11 @@
 import ItemDetail from "../ItemDetail/ItemDetail";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { useParams } from "react-router-dom";
+import {
+  doc,
+  getFirestore,
+  getDoc,
+} from "firebase/firestore";
 
 const ItemDetailContainer = () => {
   const { id } = useParams();
@@ -9,12 +13,20 @@ const ItemDetailContainer = () => {
   const [item, setItem] = useState();
 
   useEffect(() => {
-    axios
-      .get("/products.json")
-      .then((res) => {
-        setItem(res.data.find((p) => p.id == id));
-      })
-      .catch((err) => console.log(err));
+    const db = getFirestore();
+
+    const docRef = doc(db, "products", id);
+
+    const product = getDoc(docRef);
+
+    product.then(p =>{
+      setItem({
+        ...p.data(),
+        id: p.id
+      });
+    }).catch(e => {
+      console.log(e);
+    })
   }, [id]);
 
   return (
@@ -26,7 +38,7 @@ const ItemDetailContainer = () => {
         justifyContent: "space-evenly",
       }}
     >
-      {item && <ItemDetail item={item} />}
+      {item && <ItemDetail key={id} item={item} />}
     </div>
   );
 };

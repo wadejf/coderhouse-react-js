@@ -32,7 +32,7 @@ const AddToCartWidget = ({ item }) => {
         className={styles.AddToCartWidgetButton}
         onClick={() => {
           setIsAddingToCart(true);
-          setProduct(item, 1);
+          setProduct(item, getQuantityById(item.id));
         }}
       >
         <MdOutlineShoppingCart />
