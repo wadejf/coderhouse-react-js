@@ -5,7 +5,7 @@ import App from './App';
 import { initializeApp } from 'firebase/app';
 import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check';
 
-/*
+
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
@@ -22,7 +22,7 @@ initializeAppCheck(app, {
   provider: new ReCaptchaV3Provider(process.env.REACT_APP_RECAPTCHA_KEY),
   isTokenAutoRefreshEnabled: true
 });
-*/
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
