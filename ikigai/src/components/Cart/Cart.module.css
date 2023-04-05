@@ -1,89 +1,107 @@
 .CartContainer {
-    display: flex;
-    flex-wrap: wrap;
-    width: 80%;
-    flex-direction: column;
-    margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  flex-direction: column;
+  margin: auto;
 }
 
 .CartLineHeaderContainer {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    justify-content: space-around;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-around;
 }
 
 .CartLineImageHeaderContainer {
-    width: 10%;
+  width: 10%;
 }
 
 .CartLineTitleHeaderContainer {
-    font-weight: bold;
-    text-align: left;
-    width: 30%;
+  font-weight: bold;
+  text-align: left;
+  width: 30%;
 }
 
 .CartLineUnitaryPriceHeaderContainer {
-    font-weight: bold;
-    text-align: left;
-    width: 10%;
+  font-weight: bold;
+  text-align: left;
+  width: 10%;
 }
 
 .CartLineQuantityHeaderContainer {
-    font-weight: bold;
-    text-align: left;
-    width: 10%;
+  font-weight: bold;
+  text-align: left;
+  width: 10%;
 }
 
 .CartLineTotalPriceHeaderContainer {
-    font-weight: bold;
-    text-align: left;
-    width: 10%;
+  font-weight: bold;
+  text-align: left;
+  width: 10%;
 }
 
 .CartLineFooterContainer {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    justify-content: space-around;
-    margin: 30px 0px 30px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-around;
+  margin: 30px 0px 30px 0px;
 }
 
 .CartLineImageFooterContainer {
-    font-size: 18px;
-    font-weight: bold;
-    width: 10%;
+  font-size: 18px;
+  font-weight: bold;
+  width: 10%;
 }
 
 .CartLineTitleFooterContainer {
-    font-weight: bold;
-    text-align: left;
-    width: 30%;
+  font-weight: bold;
+  text-align: left;
+  width: 30%;
 }
 
 .CartLineUnitaryPriceFooterContainer {
-    font-weight: bold;
-    text-align: left;
-    width: 10%;
+  font-weight: bold;
+  text-align: left;
+  width: 10%;
 }
 
 .CartLineQuantityFooterContainer {
-    font-weight: bold;
-    text-align: left;
-    width: 10%;
+  font-weight: bold;
+  text-align: left;
+  width: 10%;
 }
 
 .CartLineTotalPriceFooterContainer {
-    font-weight: bold;
-    text-align: left;
-    width: 10%;
+  font-weight: bold;
+  text-align: left;
+  width: 10%;
 }
 
 .EmptyCartMessage {
-    text-align: center;
-    font-size: 28px;
-    width: 80%;
-    min-height: 400px;
-    margin: auto;
-    margin-top: 40px;
+  text-align: center;
+  font-size: 28px;
+  width: 80%;
+  min-height: 400px;
+  margin: auto;
+  margin-top: 40px;
+}
+
+.CheckoutButton {
+  background-color: #b24750;
+  font-family: "Poppins", sans-serif;
+  font-size: medium;
+  color: white;
+  border: none;
+  padding: 8px;
+  width: 40vh;
+  margin: 1vh 10vh 1vh 1vh;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-self: end;
+  align-items: center;
+  justify-content: center;
+  transition: 0.5s ease;
 }

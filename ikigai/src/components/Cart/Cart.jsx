@@ -46,6 +46,9 @@ const Cart = () => {
           $ {getTotalPrice()}
         </div>
       </div>
+      <button className={styles.CheckoutButton}>
+        FINALIZAR COMPRA
+      </button>
     </div>
   ): (
     <span className={styles.EmptyCartMessage}> El carrito está vacío</span>
