@@ -10,7 +10,7 @@ import {
   limit,
   query,
   orderBy,
-  startAfter  ,
+  startAfter,
   getCountFromServer,
 } from "firebase/firestore";
 import { Pagination } from "@mui/material";
@@ -23,57 +23,80 @@ const ItemListContainer = () => {
 
   const pageSize = 12;
 
+  const getQueryConstraint = () => {
+    if (categoryName === "todos") return;
+
+    if (categoryName === "promociones") return where("discount", "==", true);
+
+    return where("publishedDate", ">=", new Date(new Date().setDate(1)));
+  };
+
+  const getProducts = async (c, isFirstPage) => {
+    let lastItem = null;
+
+    let q = query(
+      c,
+      getQueryConstraint(),
+      orderBy("publishedDate"),
+      limit(pageSize)
+    );
+
+    if (!isFirstPage) {
+      const snapshot = await getDocs(q);
+
+      lastItem = snapshot.docs[snapshot.docs.length - 1];
+
+      q = query(
+        c,
+        getQueryConstraint(),
+        orderBy("publishedDate"),
+        startAfter(lastItem),
+        limit(pageSize)
+      );
+    }
+
+    return getDocs(q);
+  };
+
   useEffect(() => {
+    setPage(1);
+
     const db = getFirestore();
 
     const c = collection(db, "products");
 
-    const getQueryConstraint = () => {
-      if (categoryName === "todos") return;
+    let q = query(c, getQueryConstraint(), orderBy("publishedDate"));
 
-      if (categoryName === "promociones") return where("discount", "==", true);
+    getCountFromServer(q).then((r) => {
+      setTotalPages(Math.ceil(r.data().count / pageSize));
 
-      return where("publishedDate", ">=", new Date(new Date().setDate(1)));
-    };
-
-    const getTotalPages = async (c) => {
-      const q = query(c, getQueryConstraint());
-
-      return getCountFromServer(q).then((r) => {
-        setTotalPages(Math.ceil(r.data().count / pageSize));
-      });
-    };
-
-    const getProducts = async (c) => {
-      let lastItem = null;
-      let q = query(c, getQueryConstraint(), orderBy("publishedDate"), limit(pageSize));
-
-      if(page > 1 && totalPages > 1) {
-        const snapshot = await getDocs(q);
-
-        lastItem = snapshot.docs[snapshot.docs.length-1];
-
-        q = query(c, getQueryConstraint(), orderBy("publishedDate"), startAfter(lastItem), limit(pageSize));
-      }
-
-      const p = getDocs(q);
-
-      p.then((res) => {
-        let products = res.docs.map((product) => {
+      getProducts(c, true).then((res) => {
+        let p = res.docs.map((product) => {
           return {
             ...product.data(),
             id: product.id,
           };
         });
-
-        setProducts(products);
+        setProducts(p);
       });
-    };
-
-    getTotalPages(c).then(() => {
-      getProducts(c);
     });
-  }, [categoryName, page]);
+  }, [categoryName]);
+
+  useEffect(() => {
+    const db = getFirestore();
+
+    const c = collection(db, "products");
+
+    getProducts(c, page === 1).then((res) => {
+      let p = res.docs.map((product) => {
+        return {
+          ...product.data(),
+          id: product.id,
+        };
+      });
+      setProducts(p);
+    });
+  }, [page]);
 
   return (
     <div className={styles.ItemListContainer}>
