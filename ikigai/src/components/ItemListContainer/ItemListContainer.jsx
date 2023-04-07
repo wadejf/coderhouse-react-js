@@ -48,7 +48,7 @@ const ItemListContainer = () => {
       let lastItem = null;
       let q = query(c, getQueryConstraint(), orderBy("publishedDate"), limit(pageSize));
 
-      if(page > 1) {
+      if(page > 1 && totalPages > 1) {
         const snapshot = await getDocs(q);
 
         lastItem = snapshot.docs[snapshot.docs.length-1];
