@@ -9,6 +9,9 @@ import {
   where,
   limit,
   query,
+  orderBy,
+  startAfter  ,
+  getCountFromServer,
 } from "firebase/firestore";
 import { Pagination } from "@mui/material";
 
@@ -18,33 +21,57 @@ const ItemListContainer = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
 
+  const pageSize = 12;
+
   useEffect(() => {
     const db = getFirestore();
 
     const c = collection(db, "products");
 
     const getQueryConstraint = () => {
-      if (categoryName === "todos") return limit(12);
+      if (categoryName === "todos") return;
 
       if (categoryName === "promociones") return where("discount", "==", true);
 
-      return where("publishedDate", ">=", new Date().setDate(1));
+      return where("publishedDate", ">=", new Date(new Date().setDate(1)));
     };
 
-    const q = query(c, getQueryConstraint());
+    const getTotalPages = async (c) => {
+      const q = query(c, getQueryConstraint());
 
-    const products = getDocs(q);
-
-    products.then((res) => {
-      let products = res.docs.map((product) => {
-        return {
-          ...product.data(),
-          id: product.id,
-        };
+      return getCountFromServer(q).then((r) => {
+        setTotalPages(Math.ceil(r.data().count / pageSize));
       });
+    };
 
-      setTotalPages(Math.ceil(products.length / 10));
-      setProducts(products);
+    const getProducts = async (c) => {
+      let lastItem = null;
+      let q = query(c, getQueryConstraint(), orderBy("publishedDate"), limit(pageSize));
+
+      if(page > 1) {
+        const snapshot = await getDocs(q);
+
+        lastItem = snapshot.docs[snapshot.docs.length-1];
+
+        q = query(c, getQueryConstraint(), orderBy("publishedDate"), startAfter(lastItem), limit(pageSize));
+      }
+
+      const p = getDocs(q);
+
+      p.then((res) => {
+        let products = res.docs.map((product) => {
+          return {
+            ...product.data(),
+            id: product.id,
+          };
+        });
+
+        setProducts(products);
+      });
+    };
+
+    getTotalPages(c).then(() => {
+      getProducts(c);
     });
   }, [categoryName, page]);
 
