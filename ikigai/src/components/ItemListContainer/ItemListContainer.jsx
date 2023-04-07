@@ -18,18 +18,18 @@ const ItemListContainer = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
 
-  const getQueryConstraint = () => {
-    if (categoryName === "todos") return limit(12);
-
-    if (categoryName === "promociones") return where("discount", "==", true);
-
-    return where("publishedDate", ">=", new Date().setDate(1));
-  };
-
   useEffect(() => {
     const db = getFirestore();
 
     const c = collection(db, "products");
+
+    const getQueryConstraint = () => {
+      if (categoryName === "todos") return limit(12);
+
+      if (categoryName === "promociones") return where("discount", "==", true);
+
+      return where("publishedDate", ">=", new Date().setDate(1));
+    };
 
     const q = query(c, getQueryConstraint());
 
@@ -46,7 +46,7 @@ const ItemListContainer = () => {
       setTotalPages(Math.ceil(products.length / 10));
       setProducts(products);
     });
-  }, [categoryName, products]);
+  }, [categoryName]);
 
   return (
     <div className={styles.ItemListContainer}>
