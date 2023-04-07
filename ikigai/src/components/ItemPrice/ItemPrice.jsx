@@ -5,6 +5,7 @@ const ItemPrice = ({ item }) => {
   const formatPrice = (price) => {
     return `$ ${new Intl.NumberFormat("es-AR").format(price)}`;
   };
+  
   return item.discount ? (
     <div>
       <span className={styles.ItemOldPrice}>{formatPrice(item.price)}</span>

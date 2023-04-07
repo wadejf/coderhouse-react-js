@@ -6,7 +6,7 @@ const CartContextProvider = ({ children }) => {
   const [cart, setCart] = useState({});
 
   const setProduct = (
-    { id, title, price, img, stock, discountedPrice },
+    { id, title, price, img, stock, discount, discountedPrice },
     quantity
   ) => {
     if (quantity < 1 || quantity > stock) return;
@@ -32,6 +32,7 @@ const CartContextProvider = ({ children }) => {
         title,
         img,
         price,
+        discount,
         discountedPrice,
         quantity: 1,
       },
@@ -48,7 +49,7 @@ const CartContextProvider = ({ children }) => {
 
   const getTotalPrice = () => {
     let totalPrice = Object.values(cart).reduce((acc, p) => {
-      return acc + p.quantity * p.price;
+      return acc + getTotalPriceById(p.id);
     }, 0);
 
     return totalPrice;
@@ -65,6 +66,9 @@ const CartContextProvider = ({ children }) => {
   };
 
   const getTotalPriceById = (id) => {
+    if(cart[id].discount)
+        return cart[id].discountedPrice * cart[id].quantity;
+
     return cart[id].price * cart[id].quantity;
   };
 
