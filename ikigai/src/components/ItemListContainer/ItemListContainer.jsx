@@ -46,7 +46,7 @@ const ItemListContainer = () => {
       setTotalPages(Math.ceil(products.length / 10));
       setProducts(products);
     });
-  }, [categoryName]);
+  }, [categoryName, page]);
 
   return (
     <div className={styles.ItemListContainer}>
